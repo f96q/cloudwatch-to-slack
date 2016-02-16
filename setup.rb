@@ -4,6 +4,7 @@ require 'rubygems'
 require 'aws-sdk'
 require 'erb'
 require 'zip'
+require 'dotenv'
 
 def kms_policy(arn)
   ERB.new(File.read('./kms_policy.json.erb')).result(binding)
@@ -80,6 +81,6 @@ def main(name, web_hook_url, slack_channel)
   create_function(name, iam.role.arn, zip_file)
 end
 
-Aws.config[:region] = 'ap-northeast-1'
+Dotenv.load
 
 main(ARGV[0], ARGV[1], ARGV[2])

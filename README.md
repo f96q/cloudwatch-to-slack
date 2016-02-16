@@ -3,6 +3,7 @@
 ## setup
 
 ```
+cp .env.example .env
 bundle exec ruby setup.rb <name> <web_hook_url> <slack_channel>
 ```
 
